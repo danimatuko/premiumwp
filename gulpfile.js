@@ -2,8 +2,9 @@ import gulp from "gulp";
 import dartSass from "sass";
 import gulpSass from "gulp-sass";
 import gulpCleanCss from "gulp-clean-css";
-import gulpSourcemaps from "gulp-sourcemaps";
-import gulpImagemin from "gulp-imagemin";
+import sourcemaps from "gulp-sourcemaps";
+import imagemin from "gulp-imagemin";
+import { deleteAsync } from "del";
 
 const sass = gulpSass(dartSass);
 
@@ -29,10 +30,10 @@ const paths = {
 export const stylesConfig = () => {
   return gulp
     .src(paths.styles.src)
-    .pipe(gulpSourcemaps.init())
+    .pipe(sourcemaps.init())
     .pipe(sass().on("error", sass.logError)) //complie sass
     .pipe(gulpCleanCss({ compatibility: "ie8" })) // minify css
-    .pipe(gulpSourcemaps.write())
+    .pipe(sourcemaps.write())
     .pipe(gulp.dest(paths.styles.dest));
 };
 
@@ -43,10 +44,25 @@ export const watchSass = () => {
 export const minifyImages = () => {
   return gulp
     .src(paths.images.src)
-    .pipe(gulpImagemin())
+    .pipe(imagemin())
     .pipe(gulp.dest(paths.images.dest));
 };
 
+/*
+ *** copy files from src/assets to dist/assets
+ */
 export const copy = () => {
   return gulp.src(paths.other.src).pipe(gulp.dest(paths.other.dest));
 };
+
+/*
+ *** delete files from dist which do not exist on src
+ */
+export const clean = () => deleteAsync(["dist"]);
+
+const build = gulp.series(
+  clean,
+  gulp.parallel(stylesConfig, minifyImages, copy, watchSass)
+);
+
+export default build;
