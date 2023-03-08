@@ -5,6 +5,7 @@ import gulpCleanCss from "gulp-clean-css";
 import sourcemaps from "gulp-sourcemaps";
 import imagemin from "gulp-imagemin";
 import { deleteAsync } from "del";
+import webpack from "webpack-stream";
 
 const sass = gulpSass(dartSass);
 
@@ -16,6 +17,10 @@ const paths = {
   images: {
     src: "src/assets/images/**/*.{jpg,jpeg,png,svg,gif}",
     dest: "dist/assets/images",
+  },
+  scripts: {
+    src: "src/assets/js/bundle.js",
+    dest: "dist/assets/js",
   },
   other: {
     src: [
@@ -59,6 +64,13 @@ export const copy = () => {
  *** delete files from dist which do not exist on src
  */
 export const clean = () => deleteAsync(["dist"]);
+
+export const scripts = () => {
+  return gulp
+    .src(paths.scripts.src)
+    .pipe(webpack())
+    .pipe(gulp.dest(paths.scripts.dest));
+};
 
 const build = gulp.series(
   clean,
