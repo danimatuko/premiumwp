@@ -1,6 +1,6 @@
 <!-- Footer -->
 <footer class="text-center text-muted">
-    <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+    <section class="d-flex justify-content-center p-4 border-bottom">
         Get connected with us on social networks
     </section>
 
