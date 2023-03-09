@@ -1,4 +1,4 @@
-<article class="card rounded-0 mb-3">
+<article class="card border-0 rounded-0 mb-3 shadow-sm p-3 bg-body-tertiary ">
     <div class="card-body">
 
         <h2>
