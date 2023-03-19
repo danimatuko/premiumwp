@@ -18,7 +18,7 @@ add_action('widgets_init', 'firsttheme_widgets_init');
 
 
 function firsttheme_footer_widgets() {
-    $footer_layout = '3,3,3,3';
+    $footer_layout = get_theme_mod('_themename_footer_layout', '3,3,3,3');
     $columns = explode(',', $footer_layout);
     $color_mode = get_theme_mod('_themename_footer_bg', 'light');
 
