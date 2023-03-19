@@ -22,7 +22,7 @@
                         the_custom_logo();
                     } ?>
 
-                    <a class="navbar-brand text-primary" href="<?php echo esc_url(home_url('/')); ?>"><?php bloginfo('name'); ?></a>
+                    <a class="navbar-brand text-primary" style="<?php echo 'color:' . get_theme_mod('_themename_accent_color'); ?>" href="<?php echo esc_url(home_url('/')); ?>"><?php bloginfo('name'); ?></a>
                     <?php
                     wp_nav_menu(array(
                         'theme_location' => 'main-menu',
