@@ -13,7 +13,9 @@
         <nav class="navbar py-5 navbar-expand-lg navbar-dark bg-dark">
 
             <div class="container">
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false"
+                    aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
@@ -22,7 +24,9 @@
                         the_custom_logo();
                     } ?>
 
-                    <a class="navbar-brand text-primary" style="<?php echo 'color:' . get_theme_mod('_themename_accent_color'); ?>" href="<?php echo esc_url(home_url('/')); ?>"><?php bloginfo('name'); ?></a>
+                    <a class="navbar-brand text-primary"
+                        style="<?php echo 'color:' . get_theme_mod('_themename_accent_color'); ?>"
+                        href="<?php echo esc_url(home_url('/')); ?>"><?php bloginfo('name'); ?></a>
                     <?php
                     wp_nav_menu(array(
                         'theme_location' => 'main-menu',
