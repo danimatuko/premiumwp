@@ -14,6 +14,6 @@
             <?php firsttheme_readmore_link(); ?>
 
         </div>
-        <?php echo _theme_delete_post(); ?>
+        <?php echo _themename_delete_post(); ?>
     </div>
 </article>
